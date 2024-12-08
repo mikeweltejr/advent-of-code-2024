@@ -52,10 +52,12 @@ func evaluate(testValue int, nums []int, current int, isJoinOperator bool) bool 
 		return current == testValue
 	}
 
+	if current > testValue {
+		return false
+	}
+
 	next := nums[0]
 	remaining := nums[1:]
-
-	//fmt.Printf("Evaluating %d %d %d\n", testValue, current, next)
 
 	if evaluate(testValue, remaining, current+next, isJoinOperator) {
 		return true
